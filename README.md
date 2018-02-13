@@ -28,12 +28,11 @@ Configure Node.js proxy (From the "Exercise - Running the Jupyter Galaxy Interac
 
 First, you need to install the proxy in your Galaxy instance.
 
-<aside class="notice">
 Note : 	Be careful of the node version. 
 	Node has recently upgraded, and the galaxy proxy is pinned to an old version of sqlite3. As such you’ll currently need to have an older version of Node available (0.10.X - 0.11.X vintage).
 	Please note that if you have NodeJS installed under Ubuntu, it often installs to /usr/bin/nodejs, whereas npm expects it to be /usr/bin/node. You will need to create that symlink yourself.
 	cf "Change Node version"
-</aside>
+
 
 To check your node version, run the command :
 `node --version`
@@ -76,9 +75,7 @@ We'll now proxy the Node.js proxy with nginx. This is done by adding to /etc/ngi
     }
 ```
 
-<aside class="notice">
 Note : `proxy_pass http://127.0.0.1:8800/;` can be change to redirect to a Shiny App as `proxy_pass http://127.0.0.1:8800/samples/<APP_NAME>;`
-</aside>
 
 Once saved, restart nginx to reread the config:
 - If you don't use supervisor :
