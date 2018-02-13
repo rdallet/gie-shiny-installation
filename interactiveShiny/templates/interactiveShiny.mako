@@ -33,7 +33,7 @@ ie_request.launch(volumes=[CNVdata],env_override={
 # TODO: Make this work without pointing directly to IE. Currently does not work
 # through proxy.
 #notebook_access_url = ie_request.url_template('${PROXY_URL}/?bam=http://localhost/tmp/bamfile.bam')
-notebook_access_url = ie_request.url_template('${PROXY_URL}/')
+notebook_access_url = ie_request.url_template('${PROXY_URL}/?')
 #notebook_pubkey_url = ie_request.url_template('${PROXY_URL}/rstudio/auth-public-key')
 #notebook_access_url = ie_request.url_template('${PROXY_URL}/rstudio/')
 #notebook_login_url =  ie_request.url_template('${PROXY_URL}/rstudio/auth-do-sign-in')
