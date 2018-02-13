@@ -10,7 +10,7 @@ Install the Shiny Galaxy Interactive Environment (GIE) (From the "How to install
 
 2. Copy the folder interactiveShiny in the folder $GALAXY\_PATH/config/plugins/interactive_environments/.
 
-`cp interactiveShiny $GALAXY_PATH/config/plugins/interactive_environments/`
+`cp -r interactiveShiny $GALAXY_PATH/config/plugins/interactive_environments/`
 
 3. In the interactiveShiny/config/interactiveShiny.ini.sample, verify the image is rocker/shiny.
 
@@ -46,7 +46,7 @@ npm install
 ```
 
 
-Next, edit /srv/galaxy/config/galaxy.ini and add the following:
+Next, edit /$GALAXY_PATH/config/galaxy.ini and add the following:
 ```
 interactive_environment_plugins_directory = $GALAXY_PATH/config/plugins/interactive_environments
 dynamic_proxy_external_proxy = True
