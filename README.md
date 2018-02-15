@@ -7,3 +7,5 @@ To configure your proxy, read the Galaxy_proxy.md.
 
 Finally, to install a Shiny Galaxy Interactive Environment, follow the GIE_Shiny.md.
 
+
+
