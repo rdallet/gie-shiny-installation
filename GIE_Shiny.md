@@ -4,7 +4,7 @@ Install a Shiny Galaxy Interactive Environment
 #### Requirements : 
 
 - node 0.10.X - 0.11.X (v0.10.48 tested)
-- nvm (v0.33.8) *if node \>0.11.X installed*
+- nvm (v0.33.8) <!--*if node \>0.11.X installed*-->
 - Docker
 
 *Note : Be careful of the node version. 
