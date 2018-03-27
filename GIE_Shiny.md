@@ -21,7 +21,7 @@ Install the requirements
 `sudo apt-get install docker.io`
 
 
-#### 2. Install node (if already installed, go to the next section)
+#### 2. Install node (if node v0.10.X-0.11.X already installed, go to the next section)
 
 `sudo apt-get install npm`
 <!--VERIFY IF IT WORKS-->
