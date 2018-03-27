@@ -3,7 +3,7 @@ Configure Galaxy reverse proxy nginx
 
 #### 0. Before you begin
 
-Make sure nothing is running on port 80. If there is Apache : `/etc/init.d/apache2 stop`
+Make sure nothing is running on port 80. If there is Apache, stop it : `/etc/init.d/apache2 stop`
 
 
 #### 1. Install nginx as a reverse proxy
@@ -41,7 +41,7 @@ server {
 }
 ```
 
-Next you have to create/remove symbolic links between the sites-enabled/ directory and the sites-available/ directory to enable and disable sites and modules. With nginx you have to disable the "default" site and enable the Galaxy site we just created:
+Next you have to create/remove symbolic links between the `sites-enabled/` directory and the `sites-available/` directory to enable and disable sites and modules. With nginx you have to disable the "default" site and enable the Galaxy site we just created:
 
 ```
 cd /etc/nginx/
@@ -53,8 +53,9 @@ After these config changes, nginx must be restarted.
 
 `/etc/init.d/nginx restart`
 
-Your Galaxy server should now be visible at `http://<your_ip>/` (if you receive a page with the message "502 Bad Gateway", ensure that your Galaxy server is running).
+Your Galaxy server should now be visible at `http://<your_ip>/` *(if you receive a page with the message "502 Bad Gateway", ensure that your Galaxy server is running).*
 
+*Note : Remember to restart nginx when you change something in the configuration files.*
 
-*Note : To improve the performances, you can follow the Section 2 of the [Dagobah Training nginx exercise](https://github.com/galaxyproject/dagobah-training/blob/2018-oslo/sessions/03-production-basics/ex3-nginx.md)*
+*Note : To improve the performances, you can follow the Section 2 of the [Dagobah Training nginx exercise](https://github.com/galaxyproject/dagobah-training/blob/2018-oslo/sessions/03-production-basics/ex3-nginx.md).*
 

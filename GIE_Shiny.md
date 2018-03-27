@@ -10,19 +10,24 @@ Install a Shiny Galaxy Interactive Environment
 *Note : Be careful of the node version. 
 	Node has recently upgraded, and the galaxy proxy is pinned to an old version of sqlite3. As such you’ll currently need to have an older version of Node available (0.10.X - 0.11.X vintage).
 	Please note that if you have NodeJS installed under Ubuntu, it often installs to /usr/bin/nodejs, whereas npm expects it to be /usr/bin/node. You will need to create that symlink yourself.
-	cf "Install the requirements"*
+	cf "Install the requirements".*
 
 
 Install the requirements
 ------------------------
 
-#### 1. Install node (if already installed, go to the "3. Install Docker")
+#### 1. Install Docker (v1.13.1) <!--Ubuntu 14.04 and 16.04-->
+
+`sudo apt-get install docker.io`
+
+
+#### 2. Install node (if already installed, go to the next section)
 
 `sudo apt-get install npm`
-<!--A FAIRE-->
+<!--VERIFY IF IT WORKS-->
 
 
-#### 2. Install nvm and node
+#### 3. Install nvm to change node version
 
 To install or update nvm, you can use the install script using cURL:
 
@@ -34,7 +39,7 @@ or Wget:
 
 The script clones the nvm repository to \~/.nvm and adds the source line to your profile (\~/.bash_profile, \~/.zshrc, \~/.profile, or \~/.bashrc).
 
-You can check if nvm is correctly installed and if you have the good nvm version with : `nvm --version`
+You can check if nvm is correctly installed and if you have the good nvm version (v0.33.8) with : `nvm --version`
 
 Then, install node v0.10.48 (version tested):
 
@@ -48,27 +53,26 @@ Please note that if you have NodeJS installed under Ubuntu, you should create a 
 Finally you should have node v0.10.48 with the command `node --version`
 
 
-#### 3. Install Docker (v1.13.1) <!--Ubuntu 14.04 and 16.04-->
-
-`sudo apt-get install docker.io`
-
-
 
 Install the Shiny Galaxy Interactive Environment (GIE) (From the "How to install a Shiny environment" of [CARPEM](https://github.com/CARPEM/GalaxyDocker))
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#### 1. Copy the folder interactiveShiny in the folder $GALAXY\_PATH/config/plugins/interactive_environments/.
+#### 1. Clone this repository.
+
+`git clone https://github.com/RomainDallet/Shiny_GIE_installation.git`
+
+#### 2. Copy the folder interactiveShiny in the folder $GALAXY\_PATH/config/plugins/interactive_environments/.
 
 `cp -r interactiveShiny $GALAXY_PATH/config/plugins/interactive_environments/`
 
-#### 2. In the interactiveShiny/config/interactiveShiny.ini.sample, verify the image is rocker/shiny.
+#### 3. In the interactiveShiny/config/interactiveShiny.ini.sample, verify the image is rocker/shiny.
 
-#### 3. In the interactiveShiny.xml file, you can define for which input your Shiny environment will be available.
+#### 4. In the interactiveShiny.xml file, you can define for which input your Shiny environment will be available.
 
-#### 4. In the templates folder, interactiveShiny.mako you can define how the data are mounted inside your Shiny app.
+#### 5. In the templates folder, interactiveShiny.mako you can define how the data are mounted inside your Shiny app.
 
 <!--
-### 5. To finish you need to add a cron job [docker-cron](https://github.com/cheyer/docker-cron) to your Galaxy container in order to preserve your resources. The Shiny app is not fully recognize by Galaxy and need to be clean as reported by ValentinChCloud. He proposed to use is [Shiny app](https://github.com/ValentinChCloud/shiny-GIE) which will exited the container after 60 secondes of inactivity. We wanted to add also a cron job to delete containers which are still present, until a better solution is found. You need to provide both the app name and the duration of the app. In our cases the Shiny app is killed after 300 seconds of activity.
+### 6. To finish you need to add a cron job [docker-cron](https://github.com/cheyer/docker-cron) to your Galaxy container in order to preserve your resources. The Shiny app is not fully recognize by Galaxy and need to be clean as reported by ValentinChCloud. He proposed to use is [Shiny app](https://github.com/ValentinChCloud/shiny-GIE) which will exited the container after 60 secondes of inactivity. We wanted to add also a cron job to delete containers which are still present, until a better solution is found. You need to provide both the app name and the duration of the app. In our cases the Shiny app is killed after 300 seconds of activity.
 -->
 
 
@@ -128,12 +132,12 @@ We'll now proxy the Node.js proxy with nginx. This is done by adding to /etc/ngi
 Once saved, restart nginx to reread the config:
 
 - If you don't use supervisor :
-	- `sudo systemctl restart nginx`
+	- `/etc/init.d/nginx restart` or `sudo systemctl restart nginx`
 	- `sh run.sh`
 - If you use supervisor : Go to part 3
 
 
-
+<!--
 #### 3. Configure proxy to start with supervisor
 
 All that remains is to start the proxy, which we'll do with supervisor. Add to /etc/supervisor/conf.d/galaxy.conf:
@@ -158,10 +162,12 @@ Once saved, start the proxy by updating supervisor:
 
 And restart Galaxy and Nginx:
 
-`sudo systemctl restart nginx`
+`sudo systemctl restart nginx` and `sudo supervisorctl restart galaxy` 
 
-`sudo supervisorctl restart galaxy` or `sudo supervisorctl restart all`
+or
 
+`sudo supervisorctl restart all`
+-->
 
 
 **If it's work, you may can load a Shiny Interactive Environment from a txt/tabular/Rdata file.**
