@@ -61,19 +61,15 @@ Install the Shiny Galaxy Interactive Environment (GIE) (From the "How to install
 
 `git clone https://github.com/RomainDallet/Shiny_GIE_installation.git`
 
-#### 2. Copy the folder interactiveShiny in the folder $GALAXY\_PATH/config/plugins/interactive_environments/.
+#### 2. Copy the folder shiny in the folder $GALAXY\_PATH/config/plugins/interactive_environments/.
 
-`cp -r interactiveShiny $GALAXY_PATH/config/plugins/interactive_environments/`
+`cp -r shiny $GALAXY_PATH/config/plugins/interactive_environments/`
 
-#### 3. In the interactiveShiny/config/interactiveShiny.ini.sample, verify the image is rocker/shiny.
+#### 3. In the shiny/config/allowed_images.yml, verify the image is quay.io/workflow4metabolomics/gie-shiny.
 
-#### 4. In the interactiveShiny.xml file, you can define for which input your Shiny environment will be available.
+#### 4. In the shiny.xml file, you can define for which input your Shiny environment will be available.
 
-#### 5. In the templates folder, interactiveShiny.mako you can define how the data are mounted inside your Shiny app.
-
-<!--
-### 6. To finish you need to add a cron job [docker-cron](https://github.com/cheyer/docker-cron) to your Galaxy container in order to preserve your resources. The Shiny app is not fully recognize by Galaxy and need to be clean as reported by ValentinChCloud. He proposed to use is [Shiny app](https://github.com/ValentinChCloud/shiny-GIE) which will exited the container after 60 secondes of inactivity. We wanted to add also a cron job to delete containers which are still present, until a better solution is found. You need to provide both the app name and the duration of the app. In our cases the Shiny app is killed after 300 seconds of activity.
--->
+#### 5. In the templates folder, you can define how the data are mounted inside your Shiny app in the shiny.mako.
 
 
 
@@ -134,10 +130,10 @@ Once saved, restart nginx to reread the config:
 - If you don't use supervisor :
 	- `/etc/init.d/nginx restart` or `sudo systemctl restart nginx`
 	- `sh run.sh`
+<!--
 - If you use supervisor : Go to part 3
 
 
-<!--
 #### 3. Configure proxy to start with supervisor
 
 All that remains is to start the proxy, which we'll do with supervisor. Add to /etc/supervisor/conf.d/galaxy.conf:

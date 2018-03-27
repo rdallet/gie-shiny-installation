@@ -4,8 +4,6 @@
     <data_sources>
         <data_source>
             <model_class>HistoryDatasetAssociation</model_class><!--The data for which your shiny app will open -->
-            <test type="isinstance" test_attr="datatype" result_type="datatype">tabular.Tabular</test>
-            <test type="isinstance" test_attr="datatype" result_type="datatype">data.Text</test>
             <test type="isinstance" test_attr="datatype" result_type="datatype">binary.RData</test>            
             <to_param param_attr="id">dataset_id</to_param>
         </data_source>
@@ -13,5 +11,5 @@
     <params>
         <param type="dataset" var_name_in_template="hda" required="true">dataset_id</param>        
     </params>
-    <template>interactiveShiny.mako</template>
+    <template>shiny.mako</template>
 </interactive_environment>
