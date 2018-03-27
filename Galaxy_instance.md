@@ -3,7 +3,7 @@ Install Galaxy instance (Linux)
 
 Requirements :
 
-- Python 2.7
+- Python >2.7
 - PostgreSQL
 - uWSGI (for v18.01)
 
