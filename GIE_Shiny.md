@@ -126,11 +126,11 @@ We'll now proxy the Node.js proxy with nginx. This is done by adding to /etc/ngi
 
 
 Once saved, restart nginx to reread the config:
+- `/etc/init.d/nginx restart` or `sudo systemctl restart nginx`
+- `sh run.sh`
 
-- If you don't use supervisor :
-	- `/etc/init.d/nginx restart` or `sudo systemctl restart nginx`
-	- `sh run.sh`
 <!--
+- If you don't use supervisor :
 - If you use supervisor : Go to part 3
 
 
