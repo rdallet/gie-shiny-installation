@@ -36,8 +36,11 @@ After a few minutes of installation, our galaxy instance should be running on `h
 Next, make yourself an administrator.
 
 - Create a user account using the Galaxy User Interface (Login or Register -> Register)
-- Copy the provided `galaxy.ini.sample` : `cp $GALAXY_PATH/config/galaxy.ini.sample $GALAXY_PATH/config/galaxy.ini`
-- Modify `$GALAXY_PATH/config/galaxy.ini` to include your email as an admin by modifying the line `admin_users = $YOUR_EMAIL`
+- Copy the provided `galaxy.ini.sample` : 
+
+`cp $GALAXY_PATH/config/galaxy.ini.sample $GALAXY_PATH/config/galaxy.ini`
+
+- Modify `$GALAXY_PATH/config/galaxy.ini` to include your user email as an admin by modifying the line `admin_users = $USER_EMAIL`
 - (Re)start Galaxy (`./run.sh`)
 
 If everything works, you should have a Admin tab on you Galaxy User Interface.
