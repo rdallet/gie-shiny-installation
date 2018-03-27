@@ -9,4 +9,4 @@ Apache has not been test.
 Finally, to install a Shiny Galaxy Interactive Environment, follow the [GIE_Shiny.md](https://github.com/RomainDallet/Shiny_GIE_installation/blob/master/GIE_Shiny.md).
 
 
-Thanks to ValentinChCloud for his help.
+*Thanks to ValentinChCloud for his help.*
