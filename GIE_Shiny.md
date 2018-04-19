@@ -48,7 +48,7 @@ Then, install node v0.10.48 (version tested):
 
 Please note that if you have NodeJS installed under Ubuntu, you should create a symlink from nodejs to node.
 
-`ln -s $PATH_TO/v0.10.48/bin/node /usr/bin/nodejs`
+`ln -s $HOME_PATH/.nvm/v0.10.48/bin/node /usr/bin/nodejs`
 
 Finally you should have node v0.10.48 with the command `node --version`
 
