@@ -52,6 +52,101 @@ Please note that if you have NodeJS installed under Ubuntu, you should create a 
 
 Finally you should have node v0.10.48 with the command `node --version`
 
+<!--
+#### 4. Install uwsgi
+
+[HERE](https://github.com/galaxyproject/dagobah-training/blob/2018-oslo/sessions/10-uwsgi/ex1-uwsgi.md)
+
+##### Installation
+
+You can install uWSGI with the following line:
+
+`$ sudo apt install uwsgi uwsgi-plugin-python`
+
+##### Configure uwsgi
+
+We'll use uWSGI's "Paste Deploy" support to configure uWSGI with just a few small modifications to galaxy.ini. Begin by opening galaxy.ini in your editor:
+
+`sudo vi $GALAXY_PATH/config/galaxy.ini`
+
+And add the following section (the easiest place to put it is above the [server:main] section, which will now be unused):
+
+```
+[uwsgi]
+processes = 2
+threads = 2
+socket = 127.0.0.1:4001     # uwsgi protocol for nginx
+pythonpath = lib
+master = True
+logto = $GALAXY_PATH/log/uwsgi.log
+logfile-chmod = 644
+```
+
+Then, save and quit your editor.
+
+##### Configure the reverse proxy
+
+We previously configured nginx to communicate with Galaxy using the HTTP protocol on port 8080. We need to change this to communicate using the uWSGI protocol on port 4001, as we configured in the [uwsgi] section above. To do this, we need to return to the nginx configs we worked on in the nginx session:
+
+`sudo vi /etc/nginx/sites-available/galaxy`
+
+Locate the location / { ... } block and comment out the proxy_* directives within, and adding new directives:
+
+```
+    location / {
+        #proxy_pass          http://galaxy;
+        #proxy_set_header    X-Forwarded-Host $host;
+        #proxy_set_header    X-Forwarded-For  $proxy_add_x_forwarded_for;
+        uwsgi_pass           127.0.0.1:4001;
+        include              uwsgi_params;
+    }
+```
+
+Then, save and quit your editor. Restart nginx with:
+
+`/etc/init.d/nginx restart` or `sudo systemctl restart nginx`
+
+#### 5. Install supervisor
+
+
+###### Supervisor installation
+
+[HERE](https://github.com/galaxyproject/dagobah-training/blob/2018-oslo/sessions/11-systemd-supervisor/ex1-supervisor.md)
+
+Install supervisor from the system package manager using:
+
+`$ sudo apt install supervisor`
+
+Check if Supervisor is running and start it if it isn't:
+
+```
+$ sudo systemctl status supervisor
+$ sudo systemctl start supervisor
+```
+
+If supervisorctl status returns no output, it means it's working (but nothing has been configured yet):
+
+`$ sudo supervisorctl status`
+
+Then, we need to add a [program:x] section to the supervsior config to manage uWSGI. The default supervisor config file is at /etc/supervisor/supervisord.conf. This file includes any files matching /etc/supervisor/conf.d/*.conf. We'll create a galaxy.conf:
+
+`$ sudo -e /etc/supervisor/conf.d/galaxy.conf`
+
+Add the following new section:
+
+```
+[program:galaxy]
+command         = uwsgi --plugin python --virtualenv /srv/galaxy/venv --ini-paste /srv/galaxy/config/galaxy.ini
+directory       = /srv/galaxy/server
+autostart       = true
+autorestart     = true
+startsecs       = 10
+user            = galaxy
+stopsignal      = INT
+```
+
+Define handlers and groups managing is possible too.
+-->
 
 
 Install the Shiny Galaxy Interactive Environment (GIE) (From the "How to install a Shiny environment" of [CARPEM](https://github.com/CARPEM/GalaxyDocker))
