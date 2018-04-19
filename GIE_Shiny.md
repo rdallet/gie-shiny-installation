@@ -90,7 +90,7 @@ cd $GALAXY_PATH/lib/galaxy/web/proxy/js
 npm install
 ```
 
-Next, edit $GALAXY_PATH/config/galaxy.ini and add the following:
+Next, edit $GALAXY_PATH/config/galaxy.ini and change the following options:
 
 ```
 interactive_environment_plugins_directory = $GALAXY_PATH/config/plugins/interactive_environments
@@ -111,18 +111,18 @@ We'll now proxy the Node.js proxy with nginx. This is done by adding to /etc/ngi
 ```
     # Global GIE configuration
     location /gie_proxy {
-        proxy_pass http://localhost:8800/gie_proxy;
+        proxy_pass http://127.0.0.1:8800/gie_proxy;
         proxy_redirect off;
     }
 
     # Shiny
-    location /gie_proxy/interactiveShiny/ {
+    location /gie_proxy/shiny/ {
         proxy_pass http://127.0.0.1:8800/;
         proxy_redirect off;
     }
 ```
 
-*Note : `proxy_pass http://127.0.0.1:8800/;` can be change to redirect to a Shiny App as `proxy_pass http://127.0.0.1:8800/samples/<APP_NAME>;`*
+<!--*Note : `proxy_pass http://127.0.0.1:8800/;` can be change to redirect to a Shiny App as `proxy_pass http://127.0.0.1:8800/samples/<APP_NAME>;`*-->
 
 
 Once saved, restart nginx to reread the config:
