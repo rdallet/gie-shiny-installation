@@ -130,7 +130,7 @@ If supervisorctl status returns no output, it means it's working (but nothing ha
 
 Then, we need to add a [program:x] section to the supervsior config to manage uWSGI. The default supervisor config file is at /etc/supervisor/supervisord.conf. This file includes any files matching /etc/supervisor/conf.d/*.conf. We'll create a galaxy.conf:
 
-`$ sudo -e /etc/supervisor/conf.d/galaxy.conf`
+`$ sudo vi /etc/supervisor/conf.d/galaxy.conf`
 
 Add the following new section:
 
@@ -141,7 +141,7 @@ directory       = /srv/galaxy/server
 autostart       = true
 autorestart     = true
 startsecs       = 10
-user            = galaxy
+user            = root
 stopsignal      = INT
 ```
 
