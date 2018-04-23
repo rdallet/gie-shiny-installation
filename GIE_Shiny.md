@@ -46,7 +46,7 @@ Then, install node v0.10.48 (version tested):
 `nvm install v0.10.48`
 <!--`nvm use v0.10.48`-->
 
-Please note that if you have NodeJS installed under Ubuntu, you should create a symlink from nodejs to node.
+Please note that `npm` expects `node` to be in /usr/bin/node, so you should create a symlink from node v0.10.48 to /usr/bin/node.
 
 `ln -s $HOME_PATH/.nvm/v0.10.48/bin/node /usr/bin/node`
 
