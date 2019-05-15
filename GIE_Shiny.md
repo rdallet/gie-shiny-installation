@@ -3,7 +3,7 @@ Install a Shiny Galaxy Interactive Environment
 
 #### Requirements : 
 
-- node 0.10.X - 0.11.X (v0.10.48 tested)
+- **node 0.10.X - 0.11.X** (v0.10.48 tested)
 - nvm (v0.33.8) <!--*if node \>0.11.X installed*-->
 - Docker
 
@@ -38,6 +38,8 @@ or Wget:
 `wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash`
 
 The script clones the nvm repository to \~/.nvm and adds the source line to your profile (\~/.bash_profile, \~/.zshrc, \~/.profile, or \~/.bashrc).
+
+So, you need to `source` your profile : `source ~/.bashrc`
 
 You can check if nvm is correctly installed and if you have the good nvm version (v0.33.8) with : `nvm --version`
 
@@ -154,7 +156,7 @@ Install the Shiny Galaxy Interactive Environment (GIE) (From the "How to install
 
 #### 1. Clone this repository.
 
-`git clone https://github.com/RomainDallet/Shiny_GIE_installation.git`
+`git clone https://github.com/RomainDallet/gie-shiny-installation.git`
 
 #### 2. Copy the folder shiny in the folder $GALAXY\_PATH/config/plugins/interactive_environments/.
 
@@ -261,6 +263,6 @@ or
 -->
 
 
-**If it's work, you may can load a Shiny Interactive Environment from a txt/tabular/Rdata file.**
+**If it's work, you may can load a Shiny Interactive Environment from a txt file.**
 
 
