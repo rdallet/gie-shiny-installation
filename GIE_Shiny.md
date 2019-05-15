@@ -260,4 +260,5 @@ or
 
 
 **If it's work, you may can load a Shiny Interactive Environment from a txt file.**
-*Note : You must have an account and be logged in to access interactive environments. Just create one!
+
+*Note : You must have an account and be logged in to access interactive environments. Just create one!*
