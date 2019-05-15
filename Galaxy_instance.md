@@ -5,7 +5,7 @@ Install Galaxy instance (Linux)
 
 - Python 2.7
 - PostgreSQL
-- uWSGI (for Galaxy v18.01)
+<!-- - uWSGI (for Galaxy v18.01)-->
 
 **Packages needed :**
 
@@ -26,7 +26,7 @@ Install Galaxy instance (Linux)
 
 Start to clone the Galaxy repository :
 
-`git clone -b release_17.09 https://github.com/galaxyproject/galaxy.git`
+`git clone -b release_19.01 https://github.com/galaxyproject/galaxy.git`
 
 
 To start your Galaxy instance :
@@ -39,6 +39,7 @@ cd galaxy/
 After a few minutes of installation, our galaxy instance should be running on `http://localhost:8080`
 
 
+<!--
 Next, make yourself an administrator.
 
 - Create a user account using the Galaxy User Interface (Login or Register -> Register)
@@ -52,4 +53,4 @@ Next, make yourself an administrator.
 - (Re)start Galaxy (`./run.sh`)
 
 If everything works, you should have an Admin tab on you Galaxy User Interface.
-  
+-->

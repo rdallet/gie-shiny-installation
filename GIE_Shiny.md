@@ -24,7 +24,6 @@ Install the requirements
 #### 2. Install node (if node v0.10.X-0.11.X already installed, go to the next section)
 
 `sudo apt-get install npm`
-<!--VERIFY IF IT WORKS-->
 
 
 #### 3. Install nvm to change node version
@@ -158,13 +157,13 @@ Install the Shiny Galaxy Interactive Environment (GIE) (From the "How to install
 
 `git clone https://github.com/RomainDallet/gie-shiny-installation.git`
 
-#### 2. Copy the folder shiny in the folder $GALAXY\_PATH/config/plugins/interactive_environments/.
+#### 2. Copy the folder shiny in $GALAXY\_PATH/config/plugins/interactive_environments/.
 
 `cp -r shiny $GALAXY_PATH/config/plugins/interactive_environments/`
 
-#### 3. In the shiny/config/allowed_images.yml, verify the image is quay.io/workflow4metabolomics/gie-shiny.
+#### 3. In the shiny/config/allowed_images.yml, you can define your docker image.
 
-#### 4. In the shiny.xml file, you can define for which input your Shiny environment will be available.
+#### 4. In the shiny/config/shiny.xml, you can define for which input your Shiny environment will be available.
 
 #### 5. In the templates folder, you can define how the data are mounted inside your Shiny app in the shiny.mako.
 
@@ -219,17 +218,14 @@ We'll now proxy the Node.js proxy with nginx. This is done by adding to /etc/ngi
     }
 ```
 
-<!--*Note : `proxy_pass http://127.0.0.1:8800/;` can be change to redirect to a Shiny App as `proxy_pass http://127.0.0.1:8800/samples/<APP_NAME>;`*-->
-
-
 Once saved, restart nginx to reread the config:
 - `/etc/init.d/nginx restart` or `sudo systemctl restart nginx`
 - `sh run.sh`
 
+
 <!--
 - If you don't use supervisor :
 - If you use supervisor : Go to part 3
-
 
 #### 3. Configure proxy to start with supervisor
 
@@ -264,5 +260,4 @@ or
 
 
 **If it's work, you may can load a Shiny Interactive Environment from a txt file.**
-
-
+*Note : You must have an account and be logged in to access interactive environments. Just create one!
